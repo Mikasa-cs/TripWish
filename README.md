@@ -28,7 +28,7 @@
 
 ## 🖼️ Screenshots
 
-> *Add screenshots of homepage, booking page, trip planner UI, etc.*
+![Image](https://github.com/user-attachments/assets/73fd8a3c-e4c9-432d-a3ca-a8be67be9116)
 
 ---
 
