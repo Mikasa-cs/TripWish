@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripWise - Your Travel Companion</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html"><span>TripWise</span></a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="your-bookings.html">Your Bookings</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="contactus.html">Contact Us</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html"><button class="login">Log In</button></a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="video-background">
+                <video autoplay muted loop playsinline id="heroVideo">
+                    <source src="assets/home1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+            <div class="hero-content">
+                <h1>Say yes<br>TO YOUR VACATION</h1>
+                <p>Discover extraordinary destinations and create unforgettable memories with us</p>
+            </div>
+        </section>
+        <section class="popular-destinations" id="destinations">
+            <h2>Popular Destinations</h2>
+            <div class="destination-grid">
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800" alt="Paris">
+                    <div class="destination-info">
+                        <h3>Paris, France</h3>
+                        <p>The city of love and lights</p>
+                        <span class="price">From $699</span>
+                        <button class="book-now">Book Now</button>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=800" alt="Bali">
+                    <div class="destination-info">
+                        <h3>Bali, Indonesia</h3>
+                        <p>Paradise island getaway</p>
+                        <span class="price">From $799</span>
+                        <button class="book-now">Book Now</button>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1555992828-ca4dbe41d294?w=800" alt="Dubai">
+                    <div class="destination-info">
+                        <h3>Dubai, UAE</h3>
+                        <p>Modern luxury meets tradition</p>
+                        <span class="price">From $899</span>
+                        <button class="book-now">Book Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="view-more-container">
+                <a href="destinations.html">
+                    <button class="view-more-btn">
+                        <span>View More Destinations</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </a>
+            </div>
+        </section>
+
+        <section class="special-offers" id="offers">
+            <h2>Special Offers</h2>
+            <div class="offers-container">
+                <div class="offer-card">
+                    <div class="offer-badge">20% OFF</div>
+                    <h3>Summer Special</h3>
+                    <p>Book your summer vacation now and get 20% off on selected destinations.</p>
+                    <button class="view-offer">View Details</button>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-badge">FREE</div>
+                    <h3>Extra Night</h3>
+                    <p>Stay 3 nights and get 1 night free at our partner hotels.</p>
+                    <button class="view-offer">View Details</button>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-badge">DEAL</div>
+                    <h3>Family Package</h3>
+                    <p>Special family packages with kids stay and eat free.</p>
+                    <button class="view-offer">View Details</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials" id="testimonials">
+            <h2>What Our Travelers Say</h2>
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah">
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"Amazing experience! The trip was perfectly organized and the destinations were breathtaking."</p>
+                        <h4>Sarah Johnson</h4>
+                        <span>Bali Trip</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Mike">
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"Best travel agency I've ever used. Professional service and great attention to detail."</p>
+                        <h4>Mike Thompson</h4>
+                        <span>Europe Tour</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter">
+            <div class="newsletter-content">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Get special offers and travel inspiration directly in your inbox</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About TripWise</h3>
+                <p>Your trusted travel companion for unforgettable adventures around the world.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="#offers">Special Offers</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>Email: info@tripwise.com</p>
+                <p>Phone: +1 (555) 123-4567</p>
+                <p>Address: 123 Travel Street, Adventure City</p>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TripWise. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

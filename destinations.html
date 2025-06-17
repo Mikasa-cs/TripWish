@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations - TripWise</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="destinations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html"><span>TripWise</span></a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html" class="active">Destinations</a></li>
+                <li><a href="index.html#offers">Your Bookings</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="contactus.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="destinations-hero">
+            <div class="destinations-hero-content" data-aos="fade-up">
+                <span class="hero-subtitle">Explore The World</span>
+                <h1>Dream Destinations</h1>
+                <p>Discover breathtaking locations and unforgettable experiences</p>
+            </div>
+            <div class="hero-pattern"></div>
+        </section>
+
+        <section class="destination-search">
+            <div class="container">
+                <div class="search-container" data-aos="fade-up">
+                    <div class="search-filters">
+                        <div class="filter-group">
+                            <label for="destination-type">Type</label>
+                            <select id="destination-type">
+                                <option value="all">All Types</option>
+                                <option value="beach">Beaches</option>
+                                <option value="mountain">Mountains</option>
+                                <option value="city">Cities</option>
+                                <option value="countryside">Countryside</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="region">Region</label>
+                            <select id="region">
+                                <option value="all">All Regions</option>
+                                <option value="europe">Europe</option>
+                                <option value="asia">Asia</option>
+                                <option value="americas">Americas</option>
+                                <option value="africa">Africa</option>
+                                <option value="oceania">Oceania</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="budget">Budget</label>
+                            <select id="budget">
+                                <option value="all">All Budgets</option>
+                                <option value="budget">Budget</option>
+                                <option value="moderate">Moderate</option>
+                                <option value="luxury">Luxury</option>
+                            </select>
+                        </div>
+                        <button class="search-btn">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-destinations">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <div class="section-badge">Popular Picks</div>
+                    <h2>Featured Destinations</h2>
+                    <p>Explore our hand-picked selection of stunning locations</p>
+                </div>
+                <div class="destinations-grid">
+                    <div class="destination-card" data-aos="fade-up">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a" alt="Paris">
+                            <div class="destination-overlay">
+                                <span class="price">From $999</span>
+                                <span class="duration"><i class="fas fa-clock"></i> 5-7 days</span>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-info">
+                                <h3>Paris, France</h3>
+                                <p class="location"><i class="fas fa-map-marker-alt"></i> Europe</p>
+                            </div>
+                            <p class="description">Experience the magic of the City of Light with its iconic landmarks and romantic atmosphere.</p>
+                            <div class="destination-features">
+                                <span><i class="fas fa-hotel"></i> 4-5 Star Hotels</span>
+                                <span><i class="fas fa-utensils"></i> Fine Dining</span>
+                                <span><i class="fas fa-camera"></i> Guided Tours</span>
+                            </div>
+                            <a href="#" class="explore-btn" onclick="openBookingModal('Paris, France', 999)">Book Now</a>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1480796927426-f609979314bd" alt="Tokyo">
+                            <div class="destination-overlay">
+                                <span class="price">From $1,299</span>
+                                <span class="duration"><i class="fas fa-clock"></i> 7-10 days</span>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-info">
+                                <h3>Tokyo, Japan</h3>
+                                <p class="location"><i class="fas fa-map-marker-alt"></i> Asia</p>
+                            </div>
+                            <p class="description">Immerse yourself in the perfect blend of tradition and modernity in Japan's vibrant capital.</p>
+                            <div class="destination-features">
+                                <span><i class="fas fa-hotel"></i> Luxury Hotels</span>
+                                <span><i class="fas fa-train"></i> Rail Pass</span>
+                                <span><i class="fas fa-language"></i> Local Guide</span>
+                            </div>
+                            <a href="#" class="explore-btn" onclick="openBookingModal('Tokyo, Japan', 1299)">Book Now</a>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325" alt="Santorini">
+                            <div class="destination-overlay">
+                                <span class="price">From $1,499</span>
+                                <span class="duration"><i class="fas fa-clock"></i> 6-8 days</span>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-info">
+                                <h3>Santorini, Greece</h3>
+                                <p class="location"><i class="fas fa-map-marker-alt"></i> Europe</p>
+                            </div>
+                            <p class="description">Discover the stunning white architecture and breathtaking sunsets of this Greek paradise.</p>
+                            <div class="destination-features">
+                                <span><i class="fas fa-swimming-pool"></i> Private Pool</span>
+                                <span><i class="fas fa-wine-glass"></i> Wine Tours</span>
+                                <span><i class="fas fa-ship"></i> Island Cruise</span>
+                            </div>
+                            <a href="#" class="explore-btn" onclick="openBookingModal('Santorini, Greece', 1499)">Book Now</a>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18" alt="Dubai">
+                            <div class="destination-overlay">
+                                <span class="price">From $1,899</span>
+                                <span class="duration"><i class="fas fa-clock"></i> 7-9 days</span>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-info">
+                                <h3>Dubai, UAE</h3>
+                                <p class="location"><i class="fas fa-map-marker-alt"></i> Middle East</p>
+                            </div>
+                            <p class="description">Experience luxury and adventure in the modern oasis of the Middle East.</p>
+                            <div class="destination-features">
+                                <span><i class="fas fa-hotel"></i> Luxury Hotels</span>
+                                <span><i class="fas fa-car"></i> Desert Safari</span>
+                                <span><i class="fas fa-shopping-bag"></i> Shopping</span>
+                            </div>
+                            <a href="#" class="explore-btn" onclick="openBookingModal('Dubai, UAE', 1899)">Book Now</a>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e" alt="Bali">
+                            <div class="destination-overlay">
+                                <span class="price">From $1,299</span>
+                                <span class="duration"><i class="fas fa-clock"></i> 8-10 days</span>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-info">
+                                <h3>Bali, Indonesia</h3>
+                                <p class="location"><i class="fas fa-map-marker-alt"></i> Asia</p>
+                            </div>
+                            <p class="description">Immerse yourself in tropical paradise with rich culture and pristine beaches.</p>
+                            <div class="destination-features">
+                                <span><i class="fas fa-spa"></i> Spa & Wellness</span>
+                                <span><i class="fas fa-pray"></i> Temple Tours</span>
+                                <span><i class="fas fa-umbrella-beach"></i> Beach</span>
+                            </div>
+                            <a href="#" class="explore-btn" onclick="openBookingModal('Bali, Indonesia', 1299)">Book Now</a>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963" alt="Tuscany">
+                            <div class="destination-overlay">
+                                <span class="price">From $1,599</span>
+                                <span class="duration"><i class="fas fa-clock"></i> 8-10 days</span>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-info">
+                                <h3>Tuscany, Italy</h3>
+                                <p class="location"><i class="fas fa-map-marker-alt"></i> Europe</p>
+                            </div>
+                            <p class="description">Discover the charm of Italian countryside with wine tours, historic villas, and culinary delights.</p>
+                            <div class="destination-features">
+                                <span><i class="fas fa-home"></i> Villa Stay</span>
+                                <span><i class="fas fa-wine-glass-alt"></i> Wine Tours</span>
+                                <span><i class="fas fa-utensils"></i> Cooking Classes</span>
+                            </div>
+                            <a href="#" class="explore-btn" onclick="openBookingModal('Tuscany, Italy', 1599)">Book Now</a>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-aos="fade-up" data-aos-delay="600">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3" alt="Maldives">
+                            <div class="destination-overlay">
+                                <span class="price">From $2,499</span>
+                                <span class="duration"><i class="fas fa-clock"></i> 7-10 days</span>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-info">
+                                <h3>Maldives</h3>
+                                <p class="location"><i class="fas fa-map-marker-alt"></i> Indian Ocean</p>
+                            </div>
+                            <p class="description">Experience ultimate luxury in overwater villas with pristine beaches and crystal-clear waters.</p>
+                            <div class="destination-features">
+                                <span><i class="fas fa-water"></i> Overwater Villa</span>
+                                <span><i class="fas fa-fish"></i> Snorkeling</span>
+                                <span><i class="fas fa-spa"></i> Spa Access</span>
+                            </div>
+                            <a href="#" class="explore-btn" onclick="openBookingModal('Maldives', 2499)">Book Now</a>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-aos="fade-up" data-aos-delay="700">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b" alt="Machu Picchu">
+                            <div class="destination-overlay">
+                                <span class="price">From $1,799</span>
+                                <span class="duration"><i class="fas fa-clock"></i> 9-12 days</span>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-info">
+                                <h3>Machu Picchu, Peru</h3>
+                                <p class="location"><i class="fas fa-map-marker-alt"></i> South America</p>
+                            </div>
+                            <p class="description">Embark on a mystical journey to the ancient Incan citadel with breathtaking mountain views.</p>
+                            <div class="destination-features">
+                                <span><i class="fas fa-hiking"></i> Guided Trek</span>
+                                <span><i class="fas fa-camera"></i> Photography</span>
+                                <span><i class="fas fa-history"></i> Cultural Tours</span>
+                            </div>
+                            <a href="#" class="explore-btn" onclick="openBookingModal('Machu Picchu, Peru', 1799)">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="destination-categories">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <div class="section-badge">Travel Styles</div>
+                    <h2>Explore by Category</h2>
+                    <p>Find your perfect adventure based on your travel style</p>
+                </div>
+                <div class="categories-grid">
+                    <div class="category-card beach" data-aos="fade-up">
+                        <div class="category-content">
+                            <i class="fas fa-umbrella-beach"></i>
+                            <h3>Beach Getaways</h3>
+                            <p>20+ Destinations</p>
+                        </div>
+                    </div>
+                    <div class="category-card mountain" data-aos="fade-up" data-aos-delay="100">
+                        <div class="category-content">
+                            <i class="fas fa-mountain"></i>
+                            <h3>Mountain Escapes</h3>
+                            <p>15+ Destinations</p>
+                        </div>
+                    </div>
+                    <div class="category-card cultural" data-aos="fade-up" data-aos-delay="200">
+                        <div class="category-content">
+                            <i class="fas fa-landmark"></i>
+                            <h3>Cultural Tours</h3>
+                            <p>25+ Destinations</p>
+                        </div>
+                    </div>
+                    <div class="category-card adventure" data-aos="fade-up" data-aos-delay="300">
+                        <div class="category-content">
+                            <i class="fas fa-hiking"></i>
+                            <h3>Adventure Sports</h3>
+                            <p>18+ Destinations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="seasonal-offers">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <div class="section-badge">Limited Time</div>
+                    <h2>Seasonal Specials</h2>
+                    <p>Take advantage of our exclusive seasonal packages</p>
+                </div>
+                <div class="offers-grid">
+                    <div class="offer-card" data-aos="fade-up">
+                        <div class="offer-image">
+                            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4" alt="Summer Special">
+                            <div class="offer-tag">20% OFF</div>
+                        </div>
+                        <div class="offer-content">
+                            <h3>Summer Paradise</h3>
+                            <p>Experience the best of Mediterranean beaches</p>
+                            <ul class="offer-features">
+                                <li><i class="fas fa-check"></i> 5-star beachfront resorts</li>
+                                <li><i class="fas fa-check"></i> Water sports included</li>
+                                <li><i class="fas fa-check"></i> Guided excursions</li>
+                            </ul>
+                            <a href="#" class="offer-btn">Book Now</a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="offer-image">
+                            <img src="https://images.unsplash.com/photo-1478059299873-f047d8c5fe1a" alt="Winter Special">
+                            <div class="offer-tag">15% OFF</div>
+                        </div>
+                        <div class="offer-content">
+                            <h3>Winter Wonderland</h3>
+                            <p>Discover the magic of Alpine ski resorts</p>
+                            <ul class="offer-features">
+                                <li><i class="fas fa-check"></i> Luxury ski chalets</li>
+                                <li><i class="fas fa-check"></i> Ski pass included</li>
+                                <li><i class="fas fa-check"></i> Evening entertainment</li>
+                            </ul>
+                            <a href="#" class="offer-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="travel-tips">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <div class="section-badge">Travel Smart</div>
+                    <h2>Essential Travel Tips</h2>
+                    <p>Make the most of your travel experience with our expert advice</p>
+                </div>
+                <div class="tips-grid">
+                    <div class="tip-card" data-aos="fade-up">
+                        <i class="fas fa-passport"></i>
+                        <h3>Travel Documents</h3>
+                        <p>Ensure your passport is valid for at least 6 months beyond your travel dates</p>
+                    </div>
+                    <div class="tip-card" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-wallet"></i>
+                        <h3>Budget Planning</h3>
+                        <p>Plan your daily expenses and keep some extra for unexpected adventures</p>
+                    </div>
+                    <div class="tip-card" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-language"></i>
+                        <h3>Local Customs</h3>
+                        <p>Research and respect local customs and traditions of your destination</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter">
+            <div class="container">
+                <div class="newsletter-content" data-aos="fade-up">
+                    <h2>Get Travel Updates</h2>
+                    <p>Subscribe to our newsletter for exclusive deals and travel tips</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Book Your Trip</h2>
+            <form id="bookingForm" action="/submit_booking" method="POST">
+                <input type="hidden" id="destinationName" name="destination">
+                <input type="hidden" id="basePrice" name="base_price">
+                
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="full_name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="travelers">Number of Travelers</label>
+                        <input type="number" id="travelers" name="travelers" min="1" value="1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="travelDate">Travel Date</label>
+                        <input type="date" id="travelDate" name="travel_date" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="duration">Duration (Days)</label>
+                    <select id="duration" name="duration" required>
+                        <option value="5">5 Days</option>
+                        <option value="7">7 Days</option>
+                        <option value="10">10 Days</option>
+                        <option value="14">14 Days</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="preferences">Special Preferences</label>
+                    <textarea id="preferences" name="preferences" rows="3" placeholder="Any special requests or preferences?"></textarea>
+                </div>
+                
+                <div class="price-summary">
+                    <div class="summary-row">
+                        <span>Base Price:</span>
+                        <span id="displayBasePrice">$0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Number of Travelers:</span>
+                        <span id="displayTravelers">1</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total Price:</span>
+                        <span id="displayTotalPrice">$0</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About TripWise</h3>
+                <p>Your trusted travel companion for unforgettable adventures around the world.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="index.html#offers">Special Offers</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>Email: info@tripwise.com</p>
+                <p>Phone: +1 (555) 123-4567</p>
+                <p>Address: 123 Travel Street, Adventure City</p>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TripWise. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Booking Modal Functions
+        const modal = document.getElementById('bookingModal');
+        const closeBtn = document.getElementsByClassName('close-modal')[0];
+        const bookingForm = document.getElementById('bookingForm');
+        
+        function openBookingModal(destination, price) {
+            document.getElementById('destinationName').value = destination;
+            document.getElementById('basePrice').value = price;
+            updatePriceSummary();
+            modal.style.display = 'block';
+        }
+        
+        function closeModal() {
+            // Check if we're in confirmation mode
+            if (modal.getAttribute('data-confirmation') === 'true') {
+                return; // Don't close if we're showing confirmation
+            }
+            
+            modal.style.display = 'none';
+            // Reset the form and modal content after a short delay
+            setTimeout(() => {
+                bookingForm.reset();
+                const modalContent = document.querySelector('.modal-content');
+                modalContent.innerHTML = document.getElementById('originalModalContent').innerHTML;
+                // Reattach event listeners
+                attachModalEventListeners();
+                // Reset confirmation state
+                modal.removeAttribute('data-confirmation');
+            }, 300);
+        }
+        
+        function handleConfirmation(button) {
+            // Disable the button to prevent multiple clicks
+            button.disabled = true;
+            
+            // Add a fade-out animation class
+            const confirmationContent = button.closest('.confirmation-content');
+            confirmationContent.style.opacity = '0';
+            confirmationContent.style.transform = 'scale(0.95)';
+            
+            // Wait for animation then close
+            setTimeout(() => {
+                modal.removeAttribute('data-confirmation');
+                closeModal();
+            }, 500);
+        }
+        
+        closeBtn.onclick = function() {
+            if (modal.getAttribute('data-confirmation') !== 'true') {
+                closeModal();
+            }
+        };
+        
+        window.onclick = function(event) {
+            if (event.target == modal && modal.getAttribute('data-confirmation') !== 'true') {
+                closeModal();
+            }
+        }
+        
+        // Save original modal content for reset
+        const originalContent = document.querySelector('.modal-content').innerHTML;
+        const templateDiv = document.createElement('div');
+        templateDiv.id = 'originalModalContent';
+        templateDiv.style.display = 'none';
+        templateDiv.innerHTML = originalContent;
+        document.body.appendChild(templateDiv);
+        
+        function attachModalEventListeners() {
+            // Reattach close button listener
+            document.querySelector('.close-modal').onclick = closeModal;
+            // Reattach form submit listener
+            document.getElementById('bookingForm').addEventListener('submit', handleFormSubmit);
+            // Reattach travelers input listener
+            document.getElementById('travelers').addEventListener('change', updatePriceSummary);
+        }
+
+        // Price calculation and display
+        function updatePriceSummary() {
+            const basePrice = parseFloat(document.getElementById('basePrice').value);
+            const travelers = parseInt(document.getElementById('travelers').value);
+            const totalPrice = basePrice * travelers;
+
+            document.getElementById('displayBasePrice').textContent = `$${basePrice}`;
+            document.getElementById('displayTravelers').textContent = travelers;
+            document.getElementById('displayTotalPrice').textContent = `$${totalPrice}`;
+        }
+
+        document.getElementById('travelers').addEventListener('change', updatePriceSummary);
+        
+        // Form submission
+        bookingForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Processing...';
+            
+            const formData = new FormData(bookingForm);
+            
+            // Save to localStorage as backup
+            const bookingData = {
+                destination: formData.get('destination'),
+                fullName: formData.get('full_name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                travelers: formData.get('travelers'),
+                travelDate: formData.get('travel_date'),
+                duration: formData.get('duration'),
+                basePrice: formData.get('base_price'),
+                preferences: formData.get('preferences'),
+                timestamp: new Date().toISOString()
+            };
+            
+            // Generate a simple booking ID
+            const bookingId = 'BK' + Date.now();
+            const savedBookings = JSON.parse(localStorage.getItem('tripwise_bookings') || '[]');
+            savedBookings.push({ ...bookingData, bookingId });
+            localStorage.setItem('tripwise_bookings', JSON.stringify(savedBookings));
+            
+            try {
+                // Try to save to server
+                const response = await fetch('http://localhost:5000/submit_booking', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (!response.ok) throw new Error('Server error');
+                const result = await response.json();
+                
+                // Show success message
+                const successMessage = document.createElement('div');
+                successMessage.className = 'booking-confirmation';
+                successMessage.innerHTML = `
+                    <div class="confirmation-content">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Booking Confirmed!</h3>
+                        <p>Your booking ID: ${bookingId}</p>
+                        <p>Thank you for choosing TripWise!</p>
+                        <div class="booking-details">
+                            <p><strong>Destination:</strong> ${bookingData.destination}</p>
+                            <p><strong>Travel Date:</strong> ${bookingData.travelDate}</p>
+                            <p><strong>Number of Travelers:</strong> ${bookingData.travelers}</p>
+                            <p><strong>Total Amount:</strong> $${bookingData.basePrice * bookingData.travelers}</p>
+                        </div>
+                        <p class="save-note">Your booking details have been saved.</p>
+                        <button class="confirm-btn" onclick="handleConfirmation(this)">OK</button>
+                    </div>
+                `;
+                
+                // Replace form with success message
+                const modalContent = document.querySelector('.modal-content');
+                modalContent.innerHTML = '';
+                modalContent.appendChild(successMessage);
+                
+                // Prevent automatic closing
+                modal.setAttribute('data-confirmation', 'true');
+                
+            } catch (error) {
+                // Show offline success message (since we saved to localStorage)
+                const successMessage = document.createElement('div');
+                successMessage.className = 'booking-confirmation';
+                successMessage.innerHTML = `
+                    <div class="confirmation-content">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Booking Saved!</h3>
+                        <p>Your booking ID: ${bookingId}</p>
+                        <p>Thank you for choosing TripWise!</p>
+                        <div class="booking-details">
+                            <p><strong>Destination:</strong> ${bookingData.destination}</p>
+                            <p><strong>Travel Date:</strong> ${bookingData.travelDate}</p>
+                            <p><strong>Number of Travelers:</strong> ${bookingData.travelers}</p>
+                            <p><strong>Total Amount:</strong> $${bookingData.basePrice * bookingData.travelers}</p>
+                        </div>
+                        <p class="save-note">Your booking has been saved locally.</p>
+                        <button class="confirm-btn" onclick="handleConfirmation(this)">OK</button>
+                    </div>
+                `;
+                
+                // Replace form with success message
+                const modalContent = document.querySelector('.modal-content');
+                modalContent.innerHTML = '';
+                modalContent.appendChild(successMessage);
+                
+                // Prevent automatic closing
+                modal.setAttribute('data-confirmation', 'true');
+            }
+        });
+    </script>
+</body>
+</html> 

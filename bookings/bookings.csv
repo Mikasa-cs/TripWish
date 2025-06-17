@@ -1,0 +1,8 @@
+booking_id,booking_date,destination,full_name,email,phone,travelers,travel_date,duration,preferences,base_price,total_price
+20250610203628,2025-06-10 20:36:28,"Paris, France",Aryan Singh,aryansingh@gmail.com,+919889715327,1,2025-06-12,7,no,999,999.0
+20250610203736,2025-06-10 20:37:36,"Tokyo, Japan",Aryan ,demo@violet.com,9889715327,12,2025-06-11,5,no,1299,15588.0
+20250610204021,2025-06-10 20:40:21,"Dubai, UAE",Aryan Singh,bopoc52774@jazipo.com,0987654345,1,2025-06-29,5,no,1899,1899.0
+20250610204329,2025-06-10 20:43:29,Maldives,Aryan Singh,demo@example.com,(648) 648-6384,1,2025-06-12,5,no,2499,2499.0
+20250610204737,2025-06-10 20:47:37,"Tuscany, Italy",Aryan Singh,bopoc52774@jazipo.com,0987654345,13,2025-06-05,7,no,1599,20787.0
+BK20250610212018,2025-06-10 21:20:18,"Paris, France",Aryan Singh,bopoc52774@jazipo.com,+919889715327,12,2025-06-10,7,999.0,11988.0,no
+BK20250616220610,2025-06-16 22:06:10,"Paris, France",Aryan Singh,aryansingh@gmail.com,9889715327,3,2025-06-16,5,999.0,2997.0,no

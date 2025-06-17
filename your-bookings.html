@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Bookings - TripWise</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="your-bookings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html"><span>TripWise</span></a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="your-bookings.html" class="active">Your Bookings</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="contactus.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="bookings-hero">
+            <div class="hero-content">
+                <h1>Your Bookings</h1>
+                <p>Track and manage your travel adventures</p>
+            </div>
+        </section>
+
+        <section class="bookings-container">
+            <div class="bookings-filters">
+                <div class="search-box">
+                    <input type="text" id="searchBookings" placeholder="Search bookings...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="filter-options">
+                    <select id="sortBy">
+                        <option value="date-desc">Latest First</option>
+                        <option value="date-asc">Oldest First</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="price-asc">Price: Low to High</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="bookings-grid" id="bookingsGrid">
+                <!-- Bookings will be populated here -->
+                <div class="no-bookings-message" style="display: none;">
+                    <i class="fas fa-calendar-times"></i>
+                    <h3>No Bookings Found</h3>
+                    <p>You haven't made any bookings yet.</p>
+                    <a href="destinations.html" class="browse-btn">Browse Destinations</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About TripWise</h3>
+                <p>Your trusted travel companion for unforgettable adventures around the world.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="your-bookings.html">Your Bookings</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>Email: info@tripwise.com</p>
+                <p>Phone: +1 (555) 123-4567</p>
+                <p>Address: 123 Travel Street, Adventure City</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TripWise. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Booking Details Modal -->
+    <div id="bookingDetailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="bookingDetailsContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Load and display bookings
+        function loadBookings() {
+            const bookingsGrid = document.getElementById('bookingsGrid');
+            const noBookingsMessage = document.querySelector('.no-bookings-message');
+            
+            // Get bookings from localStorage
+            const savedBookings = JSON.parse(localStorage.getItem('tripwise_bookings') || '[]');
+            
+            if (savedBookings.length === 0) {
+                noBookingsMessage.style.display = 'flex';
+                return;
+            }
+            
+            // Sort bookings by date (most recent first)
+            savedBookings.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            
+            // Create booking cards
+            savedBookings.forEach(booking => {
+                const bookingCard = document.createElement('div');
+                bookingCard.className = 'booking-card';
+                
+                const totalAmount = parseFloat(booking.basePrice) * parseInt(booking.travelers);
+                const bookingDate = new Date(booking.timestamp).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                
+                bookingCard.innerHTML = `
+                    <div class="booking-header">
+                        <div class="header-main">
+                            <h3>${booking.destination}</h3>
+                            <span class="status-badge">Confirmed</span>
+                        </div>
+                        <span class="booking-id">ID: ${booking.bookingId}</span>
+                    </div>
+                    <div class="booking-image">
+                        <img src="${getDestinationImage(booking.destination)}" alt="${booking.destination}">
+                    </div>
+                    <div class="booking-details">
+                        <div class="detail-row">
+                            <span><i class="fas fa-calendar"></i> Travel Date:</span>
+                            <span>${formatDate(booking.travelDate)}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span><i class="fas fa-users"></i> Travelers:</span>
+                            <span>${booking.travelers} Person${booking.travelers > 1 ? 's' : ''}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span><i class="fas fa-clock"></i> Duration:</span>
+                            <span>${booking.duration} Days</span>
+                        </div>
+                        <div class="detail-row total-amount">
+                            <span><i class="fas fa-dollar-sign"></i> Total Amount:</span>
+                            <span>$${totalAmount.toLocaleString()}</span>
+                        </div>
+                    </div>
+                    <div class="booking-footer">
+                        <div class="footer-info">
+                            <span class="booking-date"><i class="far fa-calendar-check"></i> Booked on: ${bookingDate}</span>
+                            <button class="view-details-btn" onclick="showBookingDetails('${booking.bookingId}')">
+                                View Details
+                            </button>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="modify-btn" onclick="modifyBooking('${booking.bookingId}')">
+                                <i class="fas fa-edit"></i> Modify
+                            </button>
+                            <button class="cancel-btn" onclick="cancelBooking('${booking.bookingId}')">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                bookingsGrid.appendChild(bookingCard);
+            });
+        }
+
+        // Search functionality
+        document.getElementById('searchBookings').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const bookingCards = document.querySelectorAll('.booking-card');
+            
+            bookingCards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+            });
+            
+            // Show/hide no bookings message
+            const visibleCards = Array.from(bookingCards).filter(card => card.style.display !== 'none');
+            document.querySelector('.no-bookings-message').style.display = 
+                visibleCards.length === 0 ? 'flex' : 'none';
+        });
+
+        // Sorting functionality
+        document.getElementById('sortBy').addEventListener('change', function(e) {
+            const bookingsGrid = document.getElementById('bookingsGrid');
+            const bookingCards = Array.from(document.querySelectorAll('.booking-card'));
+            
+            bookingCards.sort((a, b) => {
+                const aData = getBookingData(a);
+                const bData = getBookingData(b);
+                
+                switch(e.target.value) {
+                    case 'date-desc':
+                        return new Date(bData.timestamp) - new Date(aData.timestamp);
+                    case 'date-asc':
+                        return new Date(aData.timestamp) - new Date(bData.timestamp);
+                    case 'price-desc':
+                        return bData.totalAmount - aData.totalAmount;
+                    case 'price-asc':
+                        return aData.totalAmount - bData.totalAmount;
+                }
+            });
+            
+            // Clear and re-append sorted cards
+            bookingCards.forEach(card => card.remove());
+            bookingCards.forEach(card => bookingsGrid.appendChild(card));
+        });
+
+        // Helper function to extract booking data from card
+        function getBookingData(card) {
+            const totalAmount = parseFloat(card.querySelector('.detail-row:last-child span:last-child')
+                .textContent.replace('$', ''));
+            const timestamp = new Date(card.querySelector('.booking-date').textContent.replace('Booked on: ', '')).getTime();
+            
+            return { totalAmount, timestamp };
+        }
+
+        // Cancel booking functionality
+        function cancelBooking(bookingId) {
+            if (confirm('Are you sure you want to cancel this booking?')) {
+                // Get current bookings
+                let savedBookings = JSON.parse(localStorage.getItem('tripwise_bookings') || '[]');
+                
+                // Remove the booking
+                savedBookings = savedBookings.filter(booking => booking.bookingId !== bookingId);
+                
+                // Update localStorage
+                localStorage.setItem('tripwise_bookings', JSON.stringify(savedBookings));
+                
+                // Refresh the page
+                location.reload();
+            }
+        }
+
+        // Helper function to get destination image
+        function getDestinationImage(destination) {
+            const imageMap = {
+                'Paris, France': 'https://images.unsplash.com/photo-1499856871958-5b9627545d1a',
+                'Tokyo, Japan': 'https://images.unsplash.com/photo-1480796927426-f609979314bd',
+                'Santorini, Greece': 'https://images.unsplash.com/photo-1483729558449-99ef09a8c325',
+                'Dubai, UAE': 'https://images.unsplash.com/photo-1512100356356-de1b84283e18',
+                'Bali, Indonesia': 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e',
+                'Tuscany, Italy': 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963',
+                'Maldives': 'https://images.unsplash.com/photo-1589308078059-be1415eab4c3',
+                'Machu Picchu, Peru': 'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b'
+            };
+            return imageMap[destination] || 'https://images.unsplash.com/photo-1488646953014-85cb44e25828';
+        }
+
+        // Format date helper
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        // Show booking details modal
+        function showBookingDetails(bookingId) {
+            const modal = document.getElementById('bookingDetailsModal');
+            const contentDiv = document.getElementById('bookingDetailsContent');
+            const savedBookings = JSON.parse(localStorage.getItem('tripwise_bookings') || '[]');
+            const booking = savedBookings.find(b => b.bookingId === bookingId);
+
+            if (booking) {
+                const totalAmount = parseFloat(booking.basePrice) * parseInt(booking.travelers);
+                contentDiv.innerHTML = `
+                    <div class="booking-detail-view">
+                        <div class="detail-header">
+                            <h2>${booking.destination}</h2>
+                            <div class="status">
+                                <span class="status-badge">Confirmed</span>
+                                <span class="booking-id">Booking ID: ${booking.bookingId}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-image">
+                            <img src="${getDestinationImage(booking.destination)}" alt="${booking.destination}">
+                        </div>
+
+                        <div class="detail-sections">
+                            <div class="detail-section">
+                                <h3><i class="fas fa-info-circle"></i> Trip Details</h3>
+                                <div class="detail-grid">
+                                    <div class="detail-item">
+                                        <label>Travel Date</label>
+                                        <span>${formatDate(booking.travelDate)}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <label>Duration</label>
+                                        <span>${booking.duration} Days</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <label>Number of Travelers</label>
+                                        <span>${booking.travelers} Person${booking.travelers > 1 ? 's' : ''}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3><i class="fas fa-user"></i> Contact Information</h3>
+                                <div class="detail-grid">
+                                    <div class="detail-item">
+                                        <label>Full Name</label>
+                                        <span>${booking.fullName}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <label>Email</label>
+                                        <span>${booking.email}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <label>Phone</label>
+                                        <span>${booking.phone}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="detail-section">
+                                <h3><i class="fas fa-dollar-sign"></i> Price Details</h3>
+                                <div class="price-breakdown">
+                                    <div class="price-row">
+                                        <span>Base Price</span>
+                                        <span>$${booking.basePrice}</span>
+                                    </div>
+                                    <div class="price-row">
+                                        <span>Number of Travelers</span>
+                                        <span>× ${booking.travelers}</span>
+                                    </div>
+                                    <div class="price-row total">
+                                        <span>Total Amount</span>
+                                        <span>$${totalAmount.toLocaleString()}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            ${booking.preferences ? `
+                            <div class="detail-section">
+                                <h3><i class="fas fa-star"></i> Special Preferences</h3>
+                                <p class="preferences-text">${booking.preferences}</p>
+                            </div>
+                            ` : ''}
+
+                            <div class="detail-section booking-meta">
+                                <div class="meta-info">
+                                    <span><i class="far fa-calendar-check"></i> Booked on: ${new Date(booking.timestamp).toLocaleDateString('en-US', {
+                                        year: 'numeric',
+                                        month: 'long',
+                                        day: 'numeric',
+                                        hour: '2-digit',
+                                        minute: '2-digit'
+                                    })}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="detail-actions">
+                            <button class="modify-btn" onclick="modifyBooking('${booking.bookingId}')">
+                                <i class="fas fa-edit"></i> Modify Booking
+                            </button>
+                            <button class="cancel-btn" onclick="cancelBooking('${booking.bookingId}')">
+                                <i class="fas fa-times"></i> Cancel Booking
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            modal.style.display = 'block';
+        }
+
+        // Modify booking function
+        function modifyBooking(bookingId) {
+            alert('Modification feature coming soon!');
+        }
+
+        // Close modal when clicking the close button or outside
+        const detailsModal = document.getElementById('bookingDetailsModal');
+        const closeDetailBtn = detailsModal.querySelector('.close-modal');
+
+        closeDetailBtn.onclick = function() {
+            detailsModal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == detailsModal) {
+                detailsModal.style.display = 'none';
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', loadBookings);
+    </script>
+</body>
+</html> 

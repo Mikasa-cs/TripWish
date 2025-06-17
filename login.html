@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TripWise</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-left">
+            <div class="forms-wrapper">
+                <!-- Login Form -->
+                <div class="form-section login-section active">
+                    <div class="login-header">
+                        <a href="index.html" class="logo">
+                            <span>TripWise</span>
+                        </a>
+                        <h1>Welcome Back</h1>
+                        <p>Please login to access your account</p>
+                    </div>
+                    <form class="login-form" id="loginForm">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <div class="input-group">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                                <i class="fas fa-eye toggle-password"></i>
+                            </div>
+                        </div>
+                        <div class="form-options">
+                            <label class="remember-me">
+                                <input type="checkbox" name="remember">
+                                <span class="checkmark"></span>
+                                Remember me
+                            </label>
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+                        </div>
+                        <button type="submit" class="login-button">
+                            <span>Login</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <div class="social-login">
+                            <p>Or login with</p>
+                            <div class="social-buttons">
+                                <button type="button" class="social-button google">
+                                    <i class="fab fa-google"></i>
+                                    <span>Google</span>
+                                </button>
+                                <button type="button" class="social-button facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                    <span>Facebook</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="switch-form">
+                        Don't have an account? <a href="#" class="switch-to-signup">Sign up</a>
+                    </div>
+                </div>
+
+                <!-- Signup Form -->
+                <div class="form-section signup-section">
+                    <div class="login-header">
+                        <a href="index.html" class="logo">
+                            <span>TripWise</span>
+                        </a>
+                        <h1>Create Account</h1>
+                        <p>Join our community of travelers</p>
+                    </div>
+                    <form class="signup-form" id="signupForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <div class="input-group">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupEmail">Email</label>
+                            <div class="input-group">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="signupEmail" name="signupEmail" placeholder="Enter your email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupPassword">Password</label>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="signupPassword" name="signupPassword" placeholder="Create a password" required>
+                                <i class="fas fa-eye toggle-password"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                                <i class="fas fa-eye toggle-password"></i>
+                            </div>
+                        </div>
+                        <div class="form-options">
+                            <label class="terms-checkbox">
+                                <input type="checkbox" name="terms" required>
+                                <span class="checkmark"></span>
+                                I agree to the <a href="#" class="terms-link">Terms & Conditions</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="login-button signup-button">
+                            <span>Create Account</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <div class="social-login">
+                            <p>Or sign up with</p>
+                            <div class="social-buttons">
+                                <button type="button" class="social-button google">
+                                    <i class="fab fa-google"></i>
+                                    <span>Google</span>
+                                </button>
+                                <button type="button" class="social-button facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                    <span>Facebook</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="switch-form">
+                        Already have an account? <a href="#" class="switch-to-login">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="login-right">
+            <div class="background-overlay"></div>
+            <div class="login-showcase">
+                <div class="showcase-content">
+                    <h2>Explore the World</h2>
+                    <p>Join our community of travelers and discover amazing destinations</p>
+                    <div class="showcase-images">
+                        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e" alt="Nature">
+                        <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d" alt="Forest">
+                        <img src="https://images.unsplash.com/photo-1433086966358-54859d0ed716" alt="Mountain">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html> 
